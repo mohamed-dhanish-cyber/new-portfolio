@@ -53,23 +53,13 @@ export default function Hero() {
 
       <div className="hero__container container">
         <div className="hero__content">
-          <p className="hero__greeting hero__reveal">HELLO, I'M</p>
-
-          <h1 className="hero__name hero__reveal">
-            <span className="hero__name-text">MOHAMED DHANISH</span>
+          <h1 className="hero__name hero__reveal" style={{ fontSize: 'clamp(2.5rem, 5vw, 4.5rem)', lineHeight: 1.1, marginBottom: '1.5rem' }}>
+            Designing Digital Experiences.<br/>
+            Editing Visual Stories.
           </h1>
 
-          <p className="hero__title hero__reveal">DIGITAL CREATOR</p>
-
-          <p className="hero__subtitle hero__reveal">
-            <span className="hero__subtitle-line" />
-            WEB DESIGNER <span className="hero__cross">&amp;</span> VIDEO EDITOR
-            <span className="hero__subtitle-line" />
-          </p>
-
-          <p className="hero__description hero__reveal">
-            I design and build modern digital experiences and create engaging
-            visual content for brands, businesses and individuals.
+          <p className="hero__description hero__reveal" style={{ fontSize: '1.1rem', maxWidth: '600px' }}>
+            I'm Mohamed Dhanish — a Web Designer & Video Editor creating modern websites and engaging visual content for brands, businesses and creators.
           </p>
 
           <div className="hero__actions hero__reveal">
@@ -92,7 +82,7 @@ export default function Hero() {
               strength={0.15}
               id="hero-cta-quote"
             >
-              HIRE ME <span className="btn__arrow">↗</span>
+              LET'S WORK TOGETHER <span className="btn__arrow">↗</span>
             </MagneticButton>
 
             <MagneticButton

@@ -5,12 +5,14 @@ const webSkills = [
   { name: 'HTML', level: 'Core' },
   { name: 'CSS', level: 'Core' },
   { name: 'JavaScript', level: 'Core' },
+  { name: 'React', level: 'Framework' },
   { name: 'Responsive Design', level: 'Core' },
   { name: 'UI/UX', level: 'Design' },
 ]
 
-// Update these with your actual video editing tools
 const videoSkills = [
+  { name: 'Premiere Pro', level: 'Editing' },
+  { name: 'After Effects', level: 'Motion' },
   { name: 'DaVinci Resolve', level: 'Grading' },
   { name: 'CapCut', level: 'Short-form' },
 ]

@@ -16,16 +16,14 @@ export default function Contact() {
         <div className="contact__content">
           <ScrollReveal>
             <h2 className="contact__heading">
-              LET'S BUILD<br />
-              SOMETHING<br />
-              <span className="text-accent">DIFFERENT.</span>
+              HAVE A PROJECT<br />
+              <span className="text-accent">IN MIND?</span>
             </h2>
           </ScrollReveal>
 
           <ScrollReveal delay={1}>
             <p className="contact__text">
-              Have a project, idea or business that needs a better digital
-              presence? Let's talk.
+              Let's turn your idea into something people remember.
             </p>
           </ScrollReveal>
 
