@@ -122,6 +122,15 @@ export default function Work() {
                           <span key={tool} className="work__project-tool">{tool}</span>
                         ))}
                       </div>
+                      <a
+                        href={project.videoUrl || '#'}
+                        className="btn btn--outline btn--sm"
+                        style={{ marginTop: '1rem', padding: '0.5rem 1rem', width: 'fit-content' }}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                      >
+                        WATCH PROJECT <span className="btn__arrow">↗</span>
+                      </a>
                     </div>
                   </article>
                 </ScrollReveal>

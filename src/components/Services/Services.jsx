@@ -2,24 +2,20 @@ import ScrollReveal from '../common/ScrollReveal'
 import './Services.css'
 
 const webServices = [
+  'Website Design',
+  'Responsive Website Development',
   'Business Websites',
   'Landing Pages',
-  'Portfolio Websites',
-  'Gym Websites',
-  'Restaurant Websites',
-  'Local Business Websites',
-  'Website Redesign',
-  'Responsive Web Design',
+  'Website Deployment',
+  'Basic SEO',
 ]
 
 const videoServices = [
-  'Instagram Reels',
-  'Short-form Videos',
+  'Short-form Video Editing',
+  'Reels',
   'YouTube Videos',
   'Promotional Videos',
   'Social Media Content',
-  'Cinematic Edits',
-  'Motion-based Edits',
 ]
 
 export default function Services() {

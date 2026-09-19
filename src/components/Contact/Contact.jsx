@@ -38,7 +38,7 @@ export default function Contact() {
                 strength={0.15}
                 id="contact-cta-quote"
               >
-                GET A QUOTE <span className="btn__arrow">↗</span>
+                EMAIL ME <span className="btn__arrow">↗</span>
               </MagneticButton>
 
               <MagneticButton
@@ -53,6 +53,26 @@ export default function Contact() {
                 WHATSAPP <span className="btn__arrow">↗</span>
               </MagneticButton>
             </div>
+          </ScrollReveal>
+
+          <ScrollReveal delay={2.5}>
+            <form className="contact__form" onSubmit={(e) => e.preventDefault()}>
+              <div className="contact__form-group">
+                <label htmlFor="name" className="sr-only">Name</label>
+                <input type="text" id="name" placeholder="Your Name" required className="contact__input" />
+              </div>
+              <div className="contact__form-group">
+                <label htmlFor="email" className="sr-only">Email</label>
+                <input type="email" id="email" placeholder="Your Email" required className="contact__input" />
+              </div>
+              <div className="contact__form-group">
+                <label htmlFor="message" className="sr-only">Message</label>
+                <textarea id="message" placeholder="Tell me about your project..." required rows="4" className="contact__input contact__textarea"></textarea>
+              </div>
+              <button type="submit" className="btn btn--primary btn--full">
+                SEND MESSAGE <span className="btn__arrow">↗</span>
+              </button>
+            </form>
           </ScrollReveal>
 
           <ScrollReveal delay={3}>

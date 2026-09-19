@@ -63,7 +63,7 @@ export default function Hero() {
 
           <p className="hero__subtitle hero__reveal">
             <span className="hero__subtitle-line" />
-            WEB DEVELOPER <span className="hero__cross">×</span> VIDEO EDITOR
+            WEB DESIGNER <span className="hero__cross">&amp;</span> VIDEO EDITOR
             <span className="hero__subtitle-line" />
           </p>
 
@@ -92,7 +92,7 @@ export default function Hero() {
               strength={0.15}
               id="hero-cta-quote"
             >
-              GET A QUOTE <span className="btn__arrow">↗</span>
+              HIRE ME <span className="btn__arrow">↗</span>
             </MagneticButton>
 
             <MagneticButton
