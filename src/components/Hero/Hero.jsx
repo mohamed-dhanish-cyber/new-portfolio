@@ -127,11 +127,7 @@ export default function Hero() {
         </div>
       </div>
 
-      {/* Scroll indicator */}
-      <div className="hero__scroll" aria-hidden="true">
-        <span className="hero__scroll-text">SCROLL</span>
-        <span className="hero__scroll-line" />
-      </div>
+
     </section>
   )
 }

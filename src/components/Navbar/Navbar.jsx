@@ -44,7 +44,7 @@ export default function Navbar() {
       <div className="navbar__inner container">
         {/* Logo */}
         <a href="#home" className="navbar__logo" onClick={(e) => handleNavClick(e, '#home')}>
-          <img src="/logo.png" alt="Logo" className="navbar__logo-img" />
+          <img src="/logo_transparent.png" alt="DHANISH" className="navbar__logo-img" />
         </a>
 
         {/* Desktop Nav Links */}
