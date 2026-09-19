@@ -1,0 +1,76 @@
+/* ═══════════════════════════════════════
+   Why Work With Me Section
+   ═══════════════════════════════════════ */
+
+.whyme__heading {
+  font-size: clamp(2.2rem, 5vw, 4rem);
+  margin-bottom: var(--space-xl);
+}
+
+.whyme__grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-md);
+}
+
+.whyme__card {
+  padding: var(--space-lg);
+  background: var(--bg-secondary);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  transition: all var(--duration-base) var(--ease-out);
+}
+
+.whyme__card:hover {
+  border-color: var(--border-hover);
+  transform: translateY(-4px);
+}
+
+.whyme__card-icon {
+  width: 50px;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--radius-md);
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  color: var(--accent);
+  margin-bottom: var(--space-md);
+  transition: all var(--duration-base) var(--ease-out);
+}
+
+.whyme__card:hover .whyme__card-icon {
+  box-shadow: 0 0 20px var(--accent-glow);
+  border-color: var(--accent);
+}
+
+.whyme__card-title {
+  font-size: 1rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  margin-bottom: 0.5rem;
+}
+
+.whyme__card-desc {
+  font-size: 0.88rem;
+  line-height: 1.65;
+  color: var(--text-secondary);
+}
+
+/* ── Responsive ── */
+@media (max-width: 1024px) {
+  .whyme__grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 480px) {
+  .whyme__grid {
+    grid-template-columns: 1fr;
+  }
+
+  .whyme__card {
+    padding: var(--space-md);
+  }
+}
