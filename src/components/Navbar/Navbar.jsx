@@ -7,7 +7,8 @@ const NAV_LINKS = [
   { label: 'HOME', href: '#home' },
   { label: 'ABOUT', href: '#about' },
   { label: 'SERVICES', href: '#services' },
-  { label: 'WORK', href: '#work' },
+  { label: 'WEB DESIGN', href: '#work', mode: 'web' },
+  { label: 'VIDEO EDITING', href: '#work', mode: 'video' },
   { label: 'PROCESS', href: '#process' },
   { label: 'CONTACT', href: '#contact' },
 ]
@@ -15,7 +16,7 @@ const NAV_LINKS = [
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false)
   const [mobileOpen, setMobileOpen] = useState(false)
-  const { mode, toggleMode } = usePortfolioMode()
+  const { setMode } = usePortfolioMode()
 
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 50)
@@ -29,11 +30,18 @@ export default function Navbar() {
     return () => { document.body.style.overflow = '' }
   }, [mobileOpen])
 
-  const handleNavClick = (e, href) => {
+  const handleNavClick = (e, href, targetMode = null) => {
     e.preventDefault()
     setMobileOpen(false)
-    const el = document.querySelector(href)
-    if (el) el.scrollIntoView({ behavior: 'smooth' })
+    if (targetMode) {
+      setMode(targetMode)
+    }
+    
+    // Slight delay so document.body.style.overflow gets cleared BEFORE we try to scroll
+    setTimeout(() => {
+      const el = document.querySelector(href)
+      if (el) el.scrollIntoView({ behavior: 'smooth' })
+    }, 50)
   }
 
   return (
@@ -52,30 +60,17 @@ export default function Navbar() {
         {/* Desktop Nav Links */}
         <ul className="navbar__links" role="list">
           {NAV_LINKS.map((link) => (
-            <li key={link.href}>
+            <li key={link.label}>
               <a
                 href={link.href}
                 className="navbar__link"
-                onClick={(e) => handleNavClick(e, link.href)}
+                onClick={(e) => handleNavClick(e, link.href, link.mode)}
               >
                 {link.label}
               </a>
             </li>
           ))}
         </ul>
-
-        {/* Mode Toggle */}
-        <div className="navbar__toggle-wrapper">
-          <button 
-            className="navbar__mode-toggle" 
-            onClick={toggleMode}
-            aria-label={`Switch to ${mode === 'web' ? 'Video Editing' : 'Web Design'} Mode`}
-          >
-            <div className={`navbar__mode-slider ${mode === 'video' ? 'navbar__mode-slider--right' : ''}`} />
-            <span className={`navbar__mode-label ${mode === 'web' ? 'navbar__mode-label--active' : ''}`}>Web</span>
-            <span className={`navbar__mode-label ${mode === 'video' ? 'navbar__mode-label--active' : ''}`}>Video</span>
-          </button>
-        </div>
 
         {/* Desktop CTA */}
         <MagneticButton
@@ -106,11 +101,11 @@ export default function Navbar() {
       <div className={`navbar__mobile ${mobileOpen ? 'navbar__mobile--open' : ''}`} role="dialog" aria-label="Mobile navigation">
         <ul className="navbar__mobile-links" role="list">
           {NAV_LINKS.map((link, i) => (
-            <li key={link.href} className="navbar__mobile-item" style={{ transitionDelay: `${0.05 + i * 0.05}s` }}>
+            <li key={link.label} className="navbar__mobile-item" style={{ transitionDelay: `${0.05 + i * 0.05}s` }}>
               <a
                 href={link.href}
                 className="navbar__mobile-link"
-                onClick={(e) => handleNavClick(e, link.href)}
+                onClick={(e) => handleNavClick(e, link.href, link.mode)}
               >
                 <span className="navbar__mobile-number">0{i + 1}</span>
                 {link.label}
@@ -118,16 +113,7 @@ export default function Navbar() {
             </li>
           ))}
         </ul>
-        <div className="navbar__mobile-toggle">
-          <button 
-            className="navbar__mode-toggle" 
-            onClick={toggleMode}
-          >
-            <div className={`navbar__mode-slider ${mode === 'video' ? 'navbar__mode-slider--right' : ''}`} />
-            <span className={`navbar__mode-label ${mode === 'web' ? 'navbar__mode-label--active' : ''}`}>Web</span>
-            <span className={`navbar__mode-label ${mode === 'video' ? 'navbar__mode-label--active' : ''}`}>Video</span>
-          </button>
-        </div>
+        
         <div className="navbar__mobile-footer">
           <a href="#contact" className="btn btn--primary" onClick={(e) => handleNavClick(e, '#contact')}>
             LET'S TALK <span className="btn__arrow">↗</span>

@@ -1,15 +1,15 @@
-import { useState } from 'react'
+import { usePortfolioMode } from '../../context/PortfolioContext'
 import { webProjects, videoProjects } from '../../data/projects'
 import ScrollReveal from '../common/ScrollReveal'
 import './Work.css'
 
 const TABS = [
-  { key: 'web', label: 'Web Development' },
+  { key: 'web', label: 'Web Design' },
   { key: 'video', label: 'Video Editing' },
 ]
 
 export default function Work() {
-  const [activeTab, setActiveTab] = useState('web')
+  const { mode, setMode } = usePortfolioMode()
 
   return (
     <section className="work section" id="work" aria-label="Selected work">
@@ -31,9 +31,9 @@ export default function Work() {
               <button
                 key={tab.key}
                 role="tab"
-                aria-selected={activeTab === tab.key}
-                className={`work__tab ${activeTab === tab.key ? 'work__tab--active' : ''}`}
-                onClick={() => setActiveTab(tab.key)}
+                aria-selected={mode === tab.key}
+                className={`work__tab ${mode === tab.key ? 'work__tab--active' : ''}`}
+                onClick={() => setMode(tab.key)}
                 id={`tab-${tab.key}`}
               >
                 {tab.label}
@@ -43,7 +43,7 @@ export default function Work() {
         </ScrollReveal>
 
         {/* Web Projects */}
-        {activeTab === 'web' && (
+        {mode === 'web' && (
           <div className="work__projects" role="tabpanel" aria-labelledby="tab-web" id="web-work">
             {webProjects.map((project, i) => (
               <ScrollReveal key={project.id} delay={Math.min(i + 1, 4)}>
@@ -90,7 +90,7 @@ export default function Work() {
         )}
 
         {/* Video Projects */}
-        {activeTab === 'video' && (
+        {mode === 'video' && (
           <div className="work__projects work__projects--video" role="tabpanel" aria-labelledby="tab-video" id="video-work">
             <div className="work__video-grid">
               {videoProjects.map((project, i) => (
