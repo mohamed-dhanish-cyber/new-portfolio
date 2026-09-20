@@ -1,9 +1,33 @@
+import { useState } from 'react'
 import { contactInfo } from '../../data/projects'
 import ScrollReveal from '../common/ScrollReveal'
 import MagneticButton from '../common/MagneticButton'
 import './Contact.css'
 
 export default function Contact() {
+  const [formData, setFormData] = useState({
+    name: '',
+    email: '',
+    message: ''
+  });
+
+  const handleChange = (e) => {
+    setFormData({
+      ...formData,
+      [e.target.id]: e.target.value
+    });
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    
+    const text = `Hello Dhanish, my name is ${formData.name}.\nMy Email: ${formData.email}\n\nMessage:\n${formData.message}`;
+    const encodedText = encodeURIComponent(text);
+    const whatsappUrl = `https://wa.me/${contactInfo.whatsapp}?text=${encodedText}`;
+    
+    window.open(whatsappUrl, '_blank');
+  };
+
   return (
     <section className="contact section" id="contact" aria-label="Contact">
       <div className="contact__glow" aria-hidden="true" />
@@ -54,18 +78,18 @@ export default function Contact() {
           </ScrollReveal>
 
           <ScrollReveal delay={2.5}>
-            <form className="contact__form" onSubmit={(e) => e.preventDefault()}>
+            <form className="contact__form" onSubmit={handleSubmit}>
               <div className="contact__form-group">
                 <label htmlFor="name" className="sr-only">Name</label>
-                <input type="text" id="name" placeholder="Your Name" required className="contact__input" />
+                <input type="text" id="name" value={formData.name} onChange={handleChange} placeholder="Your Name" required className="contact__input" />
               </div>
               <div className="contact__form-group">
                 <label htmlFor="email" className="sr-only">Email</label>
-                <input type="email" id="email" placeholder="Your Email" required className="contact__input" />
+                <input type="email" id="email" value={formData.email} onChange={handleChange} placeholder="Your Email" required className="contact__input" />
               </div>
               <div className="contact__form-group">
                 <label htmlFor="message" className="sr-only">Message</label>
-                <textarea id="message" placeholder="Tell me about your project..." required rows="4" className="contact__input contact__textarea"></textarea>
+                <textarea id="message" value={formData.message} onChange={handleChange} placeholder="Tell me about your project..." required rows="4" className="contact__input contact__textarea"></textarea>
               </div>
               <button type="submit" className="btn btn--primary btn--full">
                 SEND MESSAGE <span className="btn__arrow">↗</span>
