@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react'
+import { usePortfolioMode } from '../../context/PortfolioContext'
 import MagneticButton from '../common/MagneticButton'
 import './Navbar.css'
 
@@ -14,6 +15,7 @@ const NAV_LINKS = [
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false)
   const [mobileOpen, setMobileOpen] = useState(false)
+  const { mode, toggleMode } = usePortfolioMode()
 
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 50)
@@ -62,6 +64,19 @@ export default function Navbar() {
           ))}
         </ul>
 
+        {/* Mode Toggle */}
+        <div className="navbar__toggle-wrapper">
+          <button 
+            className="navbar__mode-toggle" 
+            onClick={toggleMode}
+            aria-label={`Switch to ${mode === 'web' ? 'Video Editing' : 'Web Design'} Mode`}
+          >
+            <div className={`navbar__mode-slider ${mode === 'video' ? 'navbar__mode-slider--right' : ''}`} />
+            <span className={`navbar__mode-label ${mode === 'web' ? 'navbar__mode-label--active' : ''}`}>Web</span>
+            <span className={`navbar__mode-label ${mode === 'video' ? 'navbar__mode-label--active' : ''}`}>Video</span>
+          </button>
+        </div>
+
         {/* Desktop CTA */}
         <MagneticButton
           as="a"
@@ -103,6 +118,16 @@ export default function Navbar() {
             </li>
           ))}
         </ul>
+        <div className="navbar__mobile-toggle">
+          <button 
+            className="navbar__mode-toggle" 
+            onClick={toggleMode}
+          >
+            <div className={`navbar__mode-slider ${mode === 'video' ? 'navbar__mode-slider--right' : ''}`} />
+            <span className={`navbar__mode-label ${mode === 'web' ? 'navbar__mode-label--active' : ''}`}>Web</span>
+            <span className={`navbar__mode-label ${mode === 'video' ? 'navbar__mode-label--active' : ''}`}>Video</span>
+          </button>
+        </div>
         <div className="navbar__mobile-footer">
           <a href="#contact" className="btn btn--primary" onClick={(e) => handleNavClick(e, '#contact')}>
             LET'S TALK <span className="btn__arrow">↗</span>
