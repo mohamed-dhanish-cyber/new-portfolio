@@ -103,6 +103,11 @@ body {
   line-height: 1.6;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  box-sizing: border-box;
+}
+
+*, *::before, *::after {
+  box-sizing: inherit;
 }
 
 /* Technical background grid */
@@ -186,7 +191,8 @@ ul, ol {
   width: 100%;
   max-width: var(--container-max);
   margin: 0 auto;
-  padding: 0 var(--space-md);
+  padding: 0 clamp(16px, 5vw, var(--space-md));
+  box-sizing: border-box;
 }
 
 .container--wide {
@@ -242,7 +248,12 @@ ul, ol {
   transition: all var(--duration-base) var(--ease-out);
   position: relative;
   overflow: hidden;
-  white-space: nowrap;
+  max-width: 100%;
+  box-sizing: border-box;
+  text-align: center;
+  justify-content: center;
+  word-break: break-word;
+  white-space: normal;
 }
 
 .btn--primary {
