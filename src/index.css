@@ -256,6 +256,10 @@ ul, ol {
   white-space: normal;
 }
 
+.btn:active {
+  transform: scale(0.97);
+}
+
 .btn--primary {
   background: var(--accent);
   color: var(--bg-primary);
@@ -304,14 +308,14 @@ ul, ol {
 /* ── Scroll Reveal Animation ── */
 .reveal {
   opacity: 0;
-  transform: translateY(40px);
+  transform: translate3d(0, 40px, 0);
   transition: opacity var(--duration-slower) var(--ease-out),
               transform var(--duration-slower) var(--ease-out);
 }
 
 .reveal.revealed {
   opacity: 1;
-  transform: translateY(0);
+  transform: translate3d(0, 0, 0);
 }
 
 .reveal-delay-1 { transition-delay: 0.1s; }
@@ -379,4 +383,21 @@ ul, ol {
 
 ::-webkit-scrollbar-thumb:hover {
   background: var(--text-muted);
+}
+
+/* ── Mobile Performance Mode ── */
+@media (max-width: 768px) {
+  /* Reduce expensive effects on mobile */
+  .hero__glow--1, .hero__glow--2, .hero__orb {
+    filter: blur(40px) !important;
+    animation: none !important;
+  }
+  .navbar--scrolled {
+    backdrop-filter: blur(10px) !important;
+    -webkit-backdrop-filter: blur(10px) !important;
+  }
+  .work__video-play, .work__video-category-badge {
+    backdrop-filter: none !important;
+    background: rgba(168, 85, 247, 0.4) !important;
+  }
 }

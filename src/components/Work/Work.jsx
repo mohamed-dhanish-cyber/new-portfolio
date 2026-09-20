@@ -50,7 +50,7 @@ export default function Work() {
                 <article className="work__project">
                   <div className="work__project-image">
                     {project.image ? (
-                      <img src={project.image} alt={project.title} loading="lazy" />
+                      <img src={project.image} alt={project.title} loading="lazy" decoding="async" />
                     ) : (
                       <div className="work__project-placeholder">
                         <span className="work__project-placeholder-text">
@@ -98,7 +98,7 @@ export default function Work() {
                   <article className="work__video-card">
                     <div className="work__video-thumb">
                       {project.thumbnail ? (
-                        <img src={project.thumbnail} alt={project.title} loading="lazy" />
+                        <img src={project.thumbnail} alt={project.title} loading="lazy" decoding="async" />
                       ) : (
                         <div className="work__video-placeholder">
                           <span className="work__video-placeholder-text">

@@ -22,7 +22,8 @@ export default function Hero() {
   // Subtle parallax for the visual element
   useEffect(() => {
     const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches
-    if (prefersReducedMotion) return
+    const isMobile = window.matchMedia('(max-width: 1024px)').matches
+    if (prefersReducedMotion || isMobile) return
 
     const handleMouseMove = (e) => {
       const el = visualRef.current
@@ -111,7 +112,7 @@ export default function Hero() {
             <div className="hero__visual-ring" />
             <div className="hero__visual-ring hero__visual-ring--2" />
             <div className="hero__profile-wrapper">
-              <img src="/profile.png" alt="Profile" className="hero__profile-img" />
+              <img src="/profile.png" alt="Profile" className="hero__profile-img" fetchPriority="high" decoding="sync" />
             </div>
           </div>
         </div>
