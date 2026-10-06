@@ -15,7 +15,7 @@ export default function Footer() {
         <div className="footer__inner">
           <div className="footer__brand">
             <a href="#home" className="footer__logo" onClick={scrollToTop}>
-              MOHAMED DHANISH<span className="footer__logo-reg">®</span>
+              <img src="/md-logo.png" alt="MD" className="footer__logo-img" style={{height: "40px"}} />
             </a>
             <p className="footer__tagline">DIGITAL CREATOR</p>
             <p className="footer__services">WEB • VIDEO • DIGITAL EXPERIENCES</p>
